@@ -11,7 +11,7 @@ get '/' do
 end
 
 get '/products' do
-	Stripe::Product.all.to_json
+	Stripe::Product.all(limit: 100).to_json
 end
 
 get '/products/:id' do |id|
