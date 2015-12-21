@@ -15,9 +15,9 @@ get '/products' do
 end
 
 get '/products/:id' do |id|
-	Stripe::Product.retrieve(id)
+	Stripe::Product.retrieve(id).to_json
 end
 
 post '/orders' do
-	Stripe::Order.create(params)
+	Stripe::Order.create(params).to_json
 end
