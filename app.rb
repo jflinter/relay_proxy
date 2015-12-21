@@ -17,3 +17,7 @@ end
 get '/products/:id' do |id|
 	Stripe::Product.retrieve(id)
 end
+
+post '/orders' do
+	Stripe::Order.create(params)
+end
