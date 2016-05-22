@@ -20,8 +20,7 @@ post '/sessions' do
 		:metadata => {'device_identifier' => params[:device_identifier]}
 	)
 	session[:customer_id] = customer.id
-  status 200
-  { session_id: session.inspect }.to_json
+  200
 end
 
 get '/products' do
