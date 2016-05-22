@@ -6,6 +6,7 @@ require 'encrypted_cookie'
 
 Dotenv.load
 Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
 use Rack::Session::EncryptedCookie,
   :secret => ENV['STONE_SESSION_SECRET']
 
@@ -14,10 +15,13 @@ get '/' do
 end
 
 post '/sessions' do
+  halt 400 if customer
 	customer = Stripe::Customer.create(
 		:metadata => {'device_identifier' => params[:device_identifier]}
 	)
 	session[:customer_id] = customer.id
+  status 200
+  { session_id: session.inspect }.to_json
 end
 
 get '/products' do
