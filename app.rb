@@ -29,6 +29,7 @@ get '/products/:id' do |id|
 end
 
 post '/orders' do
+  authenticate!
 	Stripe::Order.create(params).to_json
 end
 
@@ -72,7 +73,7 @@ def customer
   customer_id = session[:customer_id]
   begin
     @customer = Stripe::Customer.retrieve(customer_id)
-  rescue Stripe::InvalidRequestError do |e|
+  rescue Stripe::InvalidRequestError
   end
   @customer
 end
