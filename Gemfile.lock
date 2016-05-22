@@ -5,6 +5,7 @@ GEM
     domain_name (0.5.25)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.0.2)
+    encrypted_cookie (0.0.4)
     eventmachine (1.0.8)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -14,6 +15,11 @@ GEM
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
+    rack-test (0.6.3)
+      rack (>= 1.0)
+    racksh (1.0.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5)
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
@@ -39,7 +45,9 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv
+  encrypted_cookie
   json
+  racksh
   sinatra
   stripe
   thin
